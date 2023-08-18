@@ -1,7 +1,4 @@
 # papago-sdk-js
-  
-[![npm version](https://badge.fury.io/js/papago-sdk-js.svg)](https://badge.fury.io/js/papago-sdk-js)
-[![GitHub license](https://img.shields.io/github/license/lemoncloud-io/papago-sdk.svg)](https://github.com/devjiwonchoi/papago-sdk/blob/main/LICENSE)
 
 > Papago SDK for Node.js
 
@@ -57,17 +54,16 @@ Does not require a separate `@types` package.
 ```ts
 import {
   Papago,
-  PapagoClient,
-  PapagoTranslateParams,
+  PapagoTranslationParams,
   PapagoTranslationResponse
 } from 'papago-sdk-js'
 
-const papago: PapagoClient = new Papago({
+const papago = new Papago({
   client_id: 'PAPAGO_CLIENT_ID',
   client_secret: 'PAPAGO_CLIENT_SECRET',
 })
 
-const params: PapagoTranslateParams = {
+const params: PapagoTranslationParams = {
   from: 'en',
   to: 'ko',
   text: 'Hello World!'
