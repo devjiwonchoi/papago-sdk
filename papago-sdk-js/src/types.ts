@@ -2,6 +2,9 @@ export interface PapagoTranslateParams {
   from: string
   to: string
   text: string
+  options?: {
+    textOnly?: boolean
+  }
 }
 
 export interface PapagoTranslateResponse {

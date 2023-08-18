@@ -33,7 +33,8 @@ export class Papago {
     from,
     to,
     text,
-  }: PapagoTranslateParams): Promise<PapagoTranslateResponse> {
+    options,
+  }: PapagoTranslateParams): Promise<PapagoTranslateResponse | string> {
     const API_URL = 'https://naveropenapi.apigw.ntruss.com/nmt/v1/translation'
     const headers = this.buildHeaders()
     const formData = new URLSearchParams({
@@ -53,8 +54,10 @@ export class Papago {
         throw new Error(`HTTP error! Status: ${response.status}`)
       }
 
-      const responseData = (await response.json()) as PapagoTranslateResponse
-      return responseData
+      const responseData: PapagoTranslateResponse = await response.json()
+      return options?.textOnly
+        ? responseData.message.result.translatedText
+        : responseData
     } catch (error) {
       throw error
     }
