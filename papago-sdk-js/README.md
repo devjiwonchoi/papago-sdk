@@ -10,7 +10,7 @@ $ npm i papago-sdk-js
 
 ## Usage
 
-### Papago
+### `Papago`
 
 Set up a client with your [Papago Translation credentials](https://api.ncloud-docs.com/docs/en/ai-naver-papagonmt).
 
@@ -27,7 +27,7 @@ const papago = new Papago({
 })
 ```
 
-### translate
+### `translate`
 
 Translate text from one language to another.
 
@@ -50,7 +50,7 @@ const translation = await papago.translate({
 }
 ```
 
-### detect
+### `detect`
 
 Detect lang code of the given text.
 
