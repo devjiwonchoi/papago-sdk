@@ -1,0 +1,40 @@
+# [Papago Translator](https://papago.naver.com) SDK
+
+SDK for Papago Translator API, supporting multiple programming languages.
+
+### Usage
+
+- [papago-sdk-js](https://github.com/devjiwonchoi/papago-sdk/blob/main/papago-sdk-js/README.md)
+- papgo-sdk-py
+- papago-sdk-java
+- papago-sdk-csharp
+- papago-sdk-php
+
+### Dev Environments
+
+- [x] JavaScript (Node.js)
+- [ ] Python
+- [ ] Java
+- [ ] C#
+- [ ] PHP
+
+### Language Support
+
+> Order by Accuracy & Cross-Language Support
+
+- 🇰🇷 한국어
+- 🇺🇸 English(US)
+- 🇨🇳 简体中文 / 繁体中文
+- 🇯🇵 日本語
+- 🇫🇷 français
+- 🇮🇳 हिंदी
+- 🇪🇸 español
+- 🇩🇪 Deutsche
+- 🇮🇹 italiàno
+- 🇻🇳 Tiếng Việt
+- 🇮🇩 Indonésia
+- 🇹🇭 ภาษาไทย
+- 🇵🇹 português
+- 🇷🇺 русский
+
+For more information, see [Language Support](). 
