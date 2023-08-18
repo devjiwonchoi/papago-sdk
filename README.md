@@ -29,18 +29,17 @@ SDK for Papago Translation API, supporting multiple programming languages.
 > Order by Accuracy & Cross-Language Support
 
 - 🇰🇷 한국어
-- 🇺🇸 English(US)
-- 🇨🇳 简体中文 / 繁体中文
+- 🇺🇸 English
 - 🇯🇵 日本語
-- 🇫🇷 français
-- 🇮🇳 हिंदी
-- 🇪🇸 español
-- 🇩🇪 Deutsche
-- 🇮🇹 italiàno
+- 🇨🇳 简体中文
+- 🇹🇼 繁體中文
 - 🇻🇳 Tiếng Việt
-- 🇮🇩 Indonésia
 - 🇹🇭 ภาษาไทย
-- 🇵🇹 português
+- 🇮🇩 Indonésia
+- 🇫🇷 français
+- 🇪🇸 español
 - 🇷🇺 русский
+- 🇩🇪 Deutsch
+- 🇮🇹 italiàno
 
 For more information, see [Language Support](https://github.com/devjiwonchoi/papago-sdk/blob/main/docs/language-support.md). 
