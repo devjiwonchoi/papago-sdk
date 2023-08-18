@@ -2,6 +2,12 @@
 
 SDK for Papago Translation API, supporting multiple programming languages.
 
+### Prerequisites
+
+This SDK requires [Naver Cloud - Papago API Client ID and Secret](console.ncloud.com).
+
+For further guidance, see [Client ID and Secret]().
+
 ### Usage
 
 - [papago-sdk-js](https://github.com/devjiwonchoi/papago-sdk/blob/main/papago-sdk-js/README.md)
