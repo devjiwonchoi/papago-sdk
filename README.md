@@ -43,4 +43,4 @@ SDK for Papago Translation API, supporting multiple programming languages.
 - 🇵🇹 português
 - 🇷🇺 русский
 
-For more information, see [Language Support](). 
+For more information, see [Language Support](https://github.com/devjiwonchoi/papago-sdk/blob/main/docs/language-support.md). 
