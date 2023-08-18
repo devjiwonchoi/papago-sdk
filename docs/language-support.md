@@ -28,7 +28,8 @@
 
 - English 🇺🇸
 - Japanese 🇯🇵
-- Chinese (Simplified) / Chinese (Traditional) 🇨🇳/🇹🇼
+- Chinese (Simplified) 🇨🇳
+- Chinese (Traditional) 🇹🇼
 - Vietnamese 🇻🇳
 - Thai 🇹🇭
 - Indonesian 🇮🇩
@@ -41,7 +42,8 @@
 #### English 🇺🇸
 
 - Japanese 🇯🇵
-- Chinese (Simplified) / Chinese (Traditional) 🇨🇳 / 🇹🇼
+- Chinese (Simplified) 🇨🇳
+- Chinese (Traditional) 🇹🇼
 - Vietnamese 🇻🇳
 - Thai 🇹🇭
 - Indonesian 🇮🇩
@@ -49,7 +51,8 @@
 
 #### Japanese 🇯🇵
 
-- Chinese (Simplified) / Chinese (Traditional) 🇨🇳 / 🇹🇼
+- Chinese (Simplified) 🇨🇳
+- Chinese (Traditional) 🇹🇼
 - Vietnamese 🇻🇳
 - Thai 🇹🇭
 - Indonesian 🇮🇩
