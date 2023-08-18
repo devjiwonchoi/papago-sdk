@@ -9,7 +9,7 @@ dependencies:
     specifier: ^2.6.4
     version: 2.6.4
   node-fetch:
-    specifier: ^2.6.12
+    specifier: ^2.6.7
     version: 2.6.12
 
 devDependencies:
