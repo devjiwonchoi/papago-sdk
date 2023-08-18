@@ -42,4 +42,10 @@ SDK for Papago Translation API, supporting multiple programming languages.
 - 🇩🇪 Deutsch
 - 🇮🇹 italiàno
 
-For more information, see [Language Support](https://github.com/devjiwonchoi/papago-sdk/blob/main/docs/language-support.md). 
+For more information, see [Language Support](https://github.com/devjiwonchoi/papago-sdk/blob/main/docs/language-support.md).
+
+### Disclaimer
+
+> `papago-sdk` is an open source published by an individual.
+>
+> The activities and announcements of `papago-sdk` are not affiliated with Naver Cloud, corp.
