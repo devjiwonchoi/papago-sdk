@@ -1,15 +1,17 @@
 import fetch from 'node-fetch'
-import {
-  PapagoClient,
-  PapagoTranslateParams,
-  PapagoTranslationResponse,
-} from './types'
+import { PapagoTranslationParams, PapagoTranslationResponse } from './types'
 
 export class Papago {
-  private client_id: string
-  private client_secret: string
+  public client_id: string
+  public client_secret: string
 
-  constructor({ client_id, client_secret }: PapagoClient) {
+  constructor({
+    client_id,
+    client_secret,
+  }: {
+    client_id: string
+    client_secret: string
+  }) {
     this.client_id = client_id
     this.client_secret = client_secret
   }
@@ -39,7 +41,7 @@ export class Papago {
     from,
     to,
     text,
-  }: PapagoTranslateParams): Promise<PapagoTranslationResponse> {
+  }: PapagoTranslationParams): Promise<PapagoTranslationResponse> {
     const API_URL = 'https://openapi.naver.com/v1/papago/n2mt'
     const headers = this.buildHeaders()
     const formData = this.buildFormData(from, to, text)

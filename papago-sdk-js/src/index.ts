@@ -1,6 +1,5 @@
 export { Papago } from './papago'
 export type {
-  PapagoClient,
-  PapagoTranslateParams,
+  PapagoTranslationParams,
   PapagoTranslationResponse,
 } from './types'

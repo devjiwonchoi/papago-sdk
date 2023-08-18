@@ -1,9 +1,4 @@
-export interface PapagoClient {
-  client_id: string
-  client_secret: string
-}
-
-export interface PapagoTranslateParams {
+export interface PapagoTranslationParams {
   from: string
   to: string
   text: string
