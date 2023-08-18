@@ -1,3 +1,8 @@
+export type PapagoConfig = {
+  client_id: string
+  client_secret: string
+}
+
 export type PapagoTranslateParams = {
   from: string
   to: string

@@ -1,22 +1,17 @@
 import fetch from 'node-fetch'
 import {
-  PapagoTranslateParams,
-  PapagoTranslateResponse,
+  PapagoConfig,
   PapagoDetectParams,
   PapagoDetectResponse,
+  PapagoTranslateParams,
+  PapagoTranslateResponse,
 } from './types'
 
 export class Papago {
   public client_id: string
   public client_secret: string
 
-  constructor({
-    client_id,
-    client_secret,
-  }: {
-    client_id: string
-    client_secret: string
-  }) {
+  constructor({ client_id, client_secret }: PapagoConfig) {
     this.client_id = client_id
     this.client_secret = client_secret
   }
