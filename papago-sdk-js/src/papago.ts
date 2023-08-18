@@ -1,5 +1,10 @@
 import fetch from 'node-fetch'
-import { PapagoTranslationParams, PapagoTranslationResponse } from './types'
+import {
+  PapagoTranslateParams,
+  PapagoTranslateResponse,
+  PapagoDetectParams,
+  PapagoDetectResponse,
+} from './types'
 
 export class Papago {
   public client_id: string
@@ -18,33 +23,24 @@ export class Papago {
 
   private buildHeaders(): Record<string, string> {
     return {
-      'X-Naver-Client-Id': this.client_id,
-      'X-Naver-Client-Secret': this.client_secret,
+      'X-NCP-APIGW-API-KEY-ID': this.client_id,
+      'X-NCP-APIGW-API-KEY': this.client_secret,
       'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     }
-  }
-
-  private buildFormData(
-    from: string,
-    to: string,
-    text: string
-  ): URLSearchParams {
-    const formData = new URLSearchParams({
-      source: from,
-      target: to,
-      text,
-    })
-    return formData
   }
 
   async translate({
     from,
     to,
     text,
-  }: PapagoTranslationParams): Promise<PapagoTranslationResponse> {
-    const API_URL = 'https://openapi.naver.com/v1/papago/n2mt'
+  }: PapagoTranslateParams): Promise<PapagoTranslateResponse> {
+    const API_URL = 'https://naveropenapi.apigw.ntruss.com/nmt/v1/translation'
     const headers = this.buildHeaders()
-    const formData = this.buildFormData(from, to, text)
+    const formData = new URLSearchParams({
+      source: from,
+      target: to,
+      text,
+    })
 
     try {
       const response = await fetch(API_URL, {
@@ -57,7 +53,30 @@ export class Papago {
         throw new Error(`HTTP error! Status: ${response.status}`)
       }
 
-      const responseData = (await response.json()) as PapagoTranslationResponse
+      const responseData = (await response.json()) as PapagoTranslateResponse
+      return responseData
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async detect({ query }: PapagoDetectParams): Promise<PapagoDetectResponse> {
+    const API_URL = 'https://naveropenapi.apigw.ntruss.com/langs/v1/dect'
+    const headers = this.buildHeaders()
+    const formData = new URLSearchParams({ query })
+
+    try {
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers,
+        body: formData,
+      })
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`)
+      }
+
+      const responseData = (await response.json()) as PapagoDetectResponse
       return responseData
     } catch (error) {
       throw error

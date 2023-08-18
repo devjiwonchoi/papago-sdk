@@ -16,16 +16,22 @@ describe('translate', () => {
 
     expect(translation).toEqual({
       message: {
-        '@service': 'naverservice.nmt.proxy',
-        '@type': 'response',
-        '@version': '1.0.0',
         result: {
-          engineType: 'N2MT',
           srcLangType: 'en',
           tarLangType: 'ko',
           translatedText: '안녕, 세상아!',
         },
       },
     })
+  })
+})
+
+describe('detect', () => {
+  it('should return a detection', async () => {
+    const detection = await client.detect({
+      query: 'Hello, world!',
+    })
+
+    expect(detection).toEqual({ langCode: 'en' })
   })
 })

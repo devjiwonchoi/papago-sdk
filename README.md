@@ -1,6 +1,6 @@
-# [Papago Translator](https://papago.naver.com) SDK
+# [Papago Translation API](https://guide.ncloud-docs.com/docs/en/papagotranslation-overview) SDK
 
-SDK for Papago Translator API, supporting multiple programming languages.
+SDK for Papago Translation API, supporting multiple programming languages.
 
 ### Usage
 

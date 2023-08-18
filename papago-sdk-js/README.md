@@ -10,52 +10,72 @@ $ npm i papago-sdk-js
 
 ## Usage
 
+### Papago
+
+Set up a client with your [Papago Translation credentials](https://api.ncloud-docs.com/docs/en/ai-naver-papagonmt).
+
 ```js
 // CJS
-const { Papago } = require('papago-sdk-js');
+const { Papago } = require('papago-sdk-js')
 
 // ESM
-import { Papago } from 'papago-sdk-js';
+import { Papago } from 'papago-sdk-js'
 
 const papago = new Papago({
   client_id: 'PAPAGO_CLIENT_ID',
   client_secret: 'PAPAGO_CLIENT_SECRET',
 })
+```
 
+### translate
+
+Translate text from one language to another.
+
+```js
 const translation = await papago.translate({
   from: 'en',
   to: 'ko',
-  text: 'Hello World!'
+  text: 'Hello, World!'
 });
-```
 
-## Output
-
-```js
+// Output:
 {
   message: {
-    '@service': 'naverservice.nmt.proxy',
-    '@type': 'response',
-    '@version': '1.0.0',
     result: {
-      engineType: 'N2MT',
-      srcLangType: 'en',
-      tarLangType: 'ko',
-      translatedText: '안녕, 세상아!',
-    },
-  },
+      srcLangType: "en",
+      tarLangType: "ko",
+      translatedText: "안녕, 세상아!"
+    }
+  }
+}
+```
+
+### detect
+
+Detect lang code of the given text.
+
+```js
+const detection = await papago.detect({
+  query: 'Hello World!',
+})
+
+// Output:
+{
+  langCode: 'en'
 }
 ```
 
 ## TypeScript
 
-Does not require a separate `@types` package.
+You do not need to install `@types` package.
 
 ```ts
 import {
   Papago,
-  PapagoTranslationParams,
-  PapagoTranslationResponse
+  PapagoTranslateParams, 
+  PapagoTranslateResponse,
+  PapagoDetectParams,
+  PapagoDetectResponse,
 } from 'papago-sdk-js'
 
 const papago = new Papago({
@@ -63,11 +83,13 @@ const papago = new Papago({
   client_secret: 'PAPAGO_CLIENT_SECRET',
 })
 
-const params: PapagoTranslationParams = {
+const translateParams: PapagoTranslateParams = {
   from: 'en',
   to: 'ko',
-  text: 'Hello World!'
+  text: 'Hello World!',
 }
+const detectParams: PapagoDetectParams = { query: 'Hello World!' }
 
-const translation: PapagoTranslationResponse = await papago.translate(params)
+const translation: PapagoTranslateResponse = await papago.translate(translateParams)
+const detection: PapagoDetectResponse = await papago.detect(detectParams)
 ```

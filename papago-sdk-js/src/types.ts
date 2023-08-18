@@ -1,19 +1,23 @@
-export interface PapagoTranslationParams {
+export interface PapagoTranslateParams {
   from: string
   to: string
   text: string
 }
 
-export interface PapagoTranslationResponse {
+export interface PapagoTranslateResponse {
   message: {
-    '@service': string
-    '@type': string
-    '@version': string
     result: {
-      engineType: string
       srcLangType: string
       tarLangType: string
       translatedText: string
     }
   }
+}
+
+export interface PapagoDetectParams {
+  query: string
+}
+
+export interface PapagoDetectResponse {
+  langCode: string
 }
