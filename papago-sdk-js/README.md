@@ -1,7 +1,7 @@
 # papago-sdk-js
   
 [![npm version](https://badge.fury.io/js/papago-sdk-js.svg)](https://badge.fury.io/js/papago-sdk-js)
-[![GitHub license](https://img.shields.io/github/license/lemoncloud-io/papago-sdk-js.svg)](https://github.com/devjiwonchoi/papago-sdk/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/lemoncloud-io/papago-sdk.svg)](https://github.com/devjiwonchoi/papago-sdk/blob/main/LICENSE)
 
 > Papago SDK for Node.js
 
@@ -30,19 +30,23 @@ const translation = await papago.translate({
   to: 'ko',
   text: 'Hello World!'
 });
+```
 
-// translation
+## Output
+
+```js
 {
-  "message": {
-    "@type": "response",
-    "@service": "naverservice.nmt.proxy",
-    "@version": "1.0.0",
-    "result": {
-      "srcLangType": "en",
-      "tarLangType": "ko",
-      "translatedText": "안녕 세상!"
-    }
-  }
+  message: {
+    '@service': 'naverservice.nmt.proxy',
+    '@type': 'response',
+    '@version': '1.0.0',
+    result: {
+      engineType: 'N2MT',
+      srcLangType: 'en',
+      tarLangType: 'ko',
+      translatedText: '안녕, 세상아!',
+    },
+  },
 }
 ```
 
