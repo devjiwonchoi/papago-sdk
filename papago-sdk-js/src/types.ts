@@ -1,4 +1,4 @@
-export interface PapagoTranslateParams {
+export type PapagoTranslateParams = {
   from: string
   to: string
   text: string
@@ -7,7 +7,7 @@ export interface PapagoTranslateParams {
   }
 }
 
-export interface PapagoTranslateResponse {
+export type PapagoTranslateResponse = {
   message: {
     result: {
       srcLangType: string
@@ -17,10 +17,10 @@ export interface PapagoTranslateResponse {
   }
 }
 
-export interface PapagoDetectParams {
+export type PapagoDetectParams = {
   query: string
 }
 
-export interface PapagoDetectResponse {
+export type PapagoDetectResponse = {
   langCode: string
 }
