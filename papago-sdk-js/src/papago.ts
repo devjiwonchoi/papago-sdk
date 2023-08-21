@@ -3,7 +3,8 @@ import {
   PapagoConfig,
   PapagoDetectParams,
   PapagoDetectResponse,
-  PapagoTranslateParams,
+  PapagoTextTranslateParams,
+  PapagoHTMLTranslateParams,
   PapagoTranslateResponse,
 } from './types'
 
@@ -24,10 +25,8 @@ export class Papago {
     }
   }
 
-  private async fetch({
-    formData,
-    api,
-  }: any): Promise<PapagoTranslateResponse> {
+  // TODO: set api by given input
+  private async fetch({ formData, api }: any): Promise<any> {
     const headers = this.buildHeaders()
 
     try {
@@ -41,10 +40,9 @@ export class Papago {
         throw new Error(`HTTP error! Status: ${response.status}`)
       }
 
-      const responseData: PapagoTranslateResponse = await response.json()
-      return responseData
+      return response
     } catch (error) {
-      throw error
+      console.error(error)
     }
   }
 
@@ -54,7 +52,9 @@ export class Papago {
       to,
       text,
       options,
-    }: PapagoTranslateParams): Promise<PapagoTranslateResponse | string> => {
+    }: PapagoTextTranslateParams): Promise<
+      PapagoTranslateResponse | string
+    > => {
       const api = 'https://naveropenapi.apigw.ntruss.com/nmt/v1/translation'
       const formData = new URLSearchParams({
         source: from,
@@ -66,17 +66,59 @@ export class Papago {
         api,
       })
 
+      const responseData = await response.json()
+
       if (options?.textOnly) {
-        return response.message.result.translatedText
+        return responseData.message.result.translatedText
       }
 
-      return response
+      return responseData
     },
   }
 
-  file() {}
+  // TODO: Specify supporting lang: ko,ja,en,zh-CN
+  // public readonly file = {
+  //   translate: async ({
+  //     from,
+  //     to,
+  //     file,
+  //   }: any): Promise<PapagoTranslateResponse | string> => {
+  //     const api = 'https://naveropenapi.apigw.ntruss.com/doc-trans/v1/translate'
+  //     const formData = new FormData()
+  //     formData.append('source', from)
+  //     formData.append('target', to)
+  //     formData.append('file', file)
+  //     const response = await this.fetch({
+  //       formData,
+  //       api,
+  //     })
 
-  html() {}
+  //     return response
+  //   },
+  // }
+
+  public readonly html = {
+    translate: async ({
+      from,
+      to,
+      html,
+    }: PapagoHTMLTranslateParams): Promise<any> => {
+      const api = 'https://naveropenapi.apigw.ntruss.com/web-trans/v1/translate'
+      const formData = new URLSearchParams({
+        source: from,
+        target: to,
+        html,
+      })
+      const response = await this.fetch({
+        formData,
+        api,
+      })
+
+      const responseData = await response.text()
+
+      return responseData
+    },
+  }
 
   async detect({ query }: PapagoDetectParams): Promise<PapagoDetectResponse> {
     const API_URL = 'https://naveropenapi.apigw.ntruss.com/langs/v1/dect'
