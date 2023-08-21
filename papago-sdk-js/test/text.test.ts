@@ -2,7 +2,7 @@ import { client } from './test-utils'
 
 describe('text.translate()', () => {
   it('should return a translation', async () => {
-    const translation = await client.translate({
+    const translation = await client.text.translate({
       from: 'en',
       to: 'ko',
       text: 'Hello, world!',
@@ -20,7 +20,7 @@ describe('text.translate()', () => {
   })
 
   it('should handle options.textOnly', async () => {
-    const translation = await client.translate({
+    const translation = await client.text.translate({
       from: 'en',
       to: 'ko',
       text: 'Hello, world!',
