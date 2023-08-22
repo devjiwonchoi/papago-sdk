@@ -1,6 +1,6 @@
 {
   "name": "papago-sdk-js",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Papago SDK for Node.js",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -43,7 +43,7 @@
   "packageManager": "pnpm@8.6.12",
   "repository": {
     "type": "git",
-    "url": "https: //github.com/devjiwonchoi/papago-sdk"
+    "url": "https://github.com/devjiwonchoi/papago-sdk"
   },
   "author": "Jiwon Choi",
   "license": "MIT",
