@@ -31,4 +31,17 @@ describe('text.translate()', () => {
 
     expect(translation).toEqual({ translatedText: '안녕, 세상아!' })
   })
+
+  it('should detect language when set from to auto', async () => {
+    const translation = await client.text.translate({
+      from: 'auto',
+      to: 'ko',
+      text: 'Hello, world!',
+      options: {
+        textOnly: true,
+      },
+    })
+
+    expect(translation).toEqual({ translatedText: '안녕, 세상아!' })
+  })
 })

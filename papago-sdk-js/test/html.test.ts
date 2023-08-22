@@ -10,4 +10,14 @@ describe('html.translate()', () => {
 
     expect(translation).toEqual({ translatedHtml: '<div>안녕, 세상아!</div>' })
   })
+
+  it('should detect language when set from to auto', async () => {
+    const translation = await client.html.translate({
+      from: 'auto',
+      to: 'ko',
+      html: '<div>Hello, world!</div>',
+    })
+
+    expect(translation).toEqual({ translatedHtml: '<div>안녕, 세상아!</div>' })
+  })
 })
