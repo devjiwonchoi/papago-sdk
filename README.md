@@ -10,7 +10,8 @@ SDK for Papago Translation API, supporting multiple programming languages.
 
 ### Note
 
-Zero-cost Papago API is available [HERE](https://developers.naver.com/docs/papago/README.md), `text.translate()` and `detect()` is supported only.
+- Zero-cost Papago API is available [HERE](https://developers.naver.com/docs/papago/README.md), `text.translate()` and `detect()` is supported only.
+- [100,000 KRW(~$75)](https://www.google.com/search?q=100000+won+to+usd) worth credit is available [HERE](https://www.ncloud.com/main/).
 
 ### Usage
 
