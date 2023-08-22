@@ -3,7 +3,21 @@ export type PapagoConfig = {
   client_secret: string
 }
 
-export type PapagoTranslateParams = {
+export type PapagoDetectParams = {
+  query: string
+}
+
+export type PapagoDetectResponse = {
+  langCode: string
+}
+
+export type PapagoHtmlTranslateParams = {
+  from: string
+  to: string
+  html: string
+}
+
+export type PapagoTextTranslateParams = {
   from: string
   to: string
   text: string
@@ -13,19 +27,13 @@ export type PapagoTranslateParams = {
 }
 
 export type PapagoTranslateResponse = {
-  message: {
+  message?: {
     result: {
       srcLangType: string
       tarLangType: string
       translatedText: string
     }
   }
-}
-
-export type PapagoDetectParams = {
-  query: string
-}
-
-export type PapagoDetectResponse = {
-  langCode: string
+  translatedHtml?: string
+  translatedText?: string
 }

@@ -29,6 +29,6 @@ describe('text.translate()', () => {
       },
     })
 
-    expect(translation).toEqual('안녕, 세상아!')
+    expect(translation).toEqual({ translatedText: '안녕, 세상아!' })
   })
 })

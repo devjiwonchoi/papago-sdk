@@ -8,6 +8,6 @@ describe('html.translate()', () => {
       html: '<div>Hello, world!</div>',
     })
 
-    expect(translation).toEqual('<div>안녕, 세상아!</div>')
+    expect(translation).toEqual({ translatedHtml: '<div>안녕, 세상아!</div>' })
   })
 })

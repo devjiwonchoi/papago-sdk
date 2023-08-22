@@ -3,8 +3,8 @@ import {
   PapagoConfig,
   PapagoDetectParams,
   PapagoDetectResponse,
+  PapagoHtmlTranslateParams,
   PapagoTextTranslateParams,
-  PapagoHTMLTranslateParams,
   PapagoTranslateResponse,
 } from './types'
 
@@ -25,22 +25,29 @@ export class Papago {
     }
   }
 
-  // TODO: set api by given input
-  private async fetch({ formData, api }: any): Promise<any> {
+  private async fetch(
+    params: URLSearchParams,
+    api: string
+  ): Promise<PapagoTranslateResponse | undefined> {
     const headers = this.buildHeaders()
+    const hasText = params.has('text')
+    const hasHtml = params.has('html')
 
     try {
       const response = await fetch(api, {
         method: 'POST',
         headers,
-        body: formData,
+        body: params,
       })
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`)
       }
 
-      return response
+      if (hasText) return await response.json()
+      if (hasHtml) return { translatedHtml: await response.text() }
+
+      return undefined
     } catch (error) {
       console.error(error)
     }
@@ -53,70 +60,41 @@ export class Papago {
       text,
       options,
     }: PapagoTextTranslateParams): Promise<
-      PapagoTranslateResponse | string
+      // TODO: simplify { message: string }
+      PapagoTranslateResponse | { message: string }
     > => {
       const api = 'https://naveropenapi.apigw.ntruss.com/nmt/v1/translation'
-      const formData = new URLSearchParams({
+      const params = new URLSearchParams({
         source: from,
         target: to,
         text,
       })
-      const response = await this.fetch({
-        formData,
-        api,
-      })
+      const response = await this.fetch(params, api)
 
-      const responseData = await response.json()
+      if (!response)
+        return { message: 'Failed to translate. Please try again.' }
 
-      if (options?.textOnly) {
-        return responseData.message.result.translatedText
-      }
+      if (options?.textOnly)
+        return { translatedText: response.message?.result?.translatedText }
 
-      return responseData
+      return response as PapagoTranslateResponse
     },
   }
-
-  // TODO: Specify supporting lang: ko,ja,en,zh-CN
-  // public readonly file = {
-  //   translate: async ({
-  //     from,
-  //     to,
-  //     file,
-  //   }: any): Promise<PapagoTranslateResponse | string> => {
-  //     const api = 'https://naveropenapi.apigw.ntruss.com/doc-trans/v1/translate'
-  //     const formData = new FormData()
-  //     formData.append('source', from)
-  //     formData.append('target', to)
-  //     formData.append('file', file)
-  //     const response = await this.fetch({
-  //       formData,
-  //       api,
-  //     })
-
-  //     return response
-  //   },
-  // }
 
   public readonly html = {
     translate: async ({
       from,
       to,
       html,
-    }: PapagoHTMLTranslateParams): Promise<any> => {
+    }: PapagoHtmlTranslateParams): Promise<PapagoTranslateResponse> => {
       const api = 'https://naveropenapi.apigw.ntruss.com/web-trans/v1/translate'
-      const formData = new URLSearchParams({
+      const params = new URLSearchParams({
         source: from,
         target: to,
         html,
       })
-      const response = await this.fetch({
-        formData,
-        api,
-      })
-
-      const responseData = await response.text()
-
-      return responseData
+      const response = await this.fetch(params, api)
+      return response as PapagoTranslateResponse
     },
   }
 
