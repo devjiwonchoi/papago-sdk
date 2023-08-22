@@ -21,10 +21,6 @@ SDK for Papago Translation API, supporting multiple programming languages.
 - papago-sdk-csharp
 - papago-sdk-php
 
-#### CDN
-
-See [papago-sdk-js](https://github.com/devjiwonchoi/papago-sdk/blob/main/papago-sdk-js/README.md) for JavaScript usage.
-
 ```js
 <script src="https://cdn.jsdelivr.net/npm/papago-sdk-js@latest/dist/index.js"></script>
 ```
