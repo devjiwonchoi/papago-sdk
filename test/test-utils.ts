@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import { Papago } from '../src/papago'
 
 export const client = new Papago({
