@@ -1,6 +1,6 @@
 {
   "name": "papago-sdk",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Papago SDK for Node.js",
   "scripts": {
     "build": "bunchee",
@@ -45,8 +45,5 @@
     "papago-sdk-js",
     "translate",
     "translator"
-  ],
-  "dependencies": {
-    "papago-sdk-js": "^0.1.1"
-  }
+  ]
 }
