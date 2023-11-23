@@ -11,23 +11,20 @@ export type PapagoDetectResponse = {
   langCode: string
 }
 
-export type PapagoHtmlTranslateParams = {
+export type PapagoTranslateParams = {
   from: string
   to: string
-  html: string
-}
+  input: string
+} & (
+  | {
+      type: 'text'
+      options?: {
+        textOnly?: boolean
+      }
+    }
+  | { type: 'html' }
+)
 
-export type PapagoTextTranslateParams = {
-  from: string
-  to: string
-  text: string
-  options?: {
-    textOnly?: boolean
-  }
-}
-
-export type PapagoTranslateParams =
-  | PapagoTextTranslateParams & PapagoHtmlTranslateParams
 
 export type PapagoTranslateResponse = {
   message?: {

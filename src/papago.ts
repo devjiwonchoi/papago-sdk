@@ -7,28 +7,25 @@ import {
 } from './types'
 
 export class Papago {
-  protected id: string
-  protected secret: string
-
   constructor({ id, secret }: PapagoConfig) {
     this.id = id
     this.secret = secret
   }
 
-  private buildHeaders(): Record<string, string> {
+  private id: string
+  private secret: string
+  private headers(): Record<string, string> {
     return {
       'X-NCP-APIGW-API-KEY-ID': this.id,
       'X-NCP-APIGW-API-KEY': this.secret,
       'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     }
   }
-
   private async fetch(
     params: URLSearchParams,
     api: string
-  ): Promise<PapagoTranslateResponse | undefined> {
-    const headers = this.buildHeaders()
-    const hasText = params.has('text')
+  ): Promise<PapagoTranslateResponse> {
+    const headers = this.headers()
     const hasHtml = params.has('html')
 
     try {
@@ -38,42 +35,46 @@ export class Papago {
         body: params,
       })
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`)
-      }
-
-      if (hasText) return await response.json()
-      if (hasHtml) return { translatedHtml: await response.text() }
-
-      return undefined
+      return hasHtml
+        ? { translatedHtml: await response.text() }
+        : await response.json()
     } catch (error) {
       console.error(error)
+      throw error
     }
   }
 
-  async translate({ from, to, ...params }: PapagoTranslateParams) {
+  async translate({
+    from,
+    to,
+    type,
+    input,
+    ...params
+  }: PapagoTranslateParams): Promise<PapagoTranslateResponse> {
+    const isText = type === 'text'
+    const isTextOnly = 'options' in params && params.options?.textOnly && isText
     const apiURL = `https://naveropenapi.apigw.ntruss.com/${
-      params.html ? 'web-trans/v1/translate' : 'nmt/v1/translation'
+      isText ? 'nmt/v1/translation' : 'web-trans/v1/translate'
     }`
     const query = new URLSearchParams({
       source: from,
       target: to,
-      html: params?.html,
-      text: params?.text,
     })
+
+    query.append(isText ? 'text' : 'html', input)
 
     const response = await this.fetch(query, apiURL)
 
-    if (params?.options?.textOnly) {
+    if (isTextOnly) {
       return { translatedText: response?.message?.result?.translatedText }
     }
 
-    return response as PapagoTranslateResponse
+    return response
   }
 
   async detect({ query }: PapagoDetectParams): Promise<PapagoDetectResponse> {
     const apiURL = 'https://naveropenapi.apigw.ntruss.com/langs/v1/dect'
-    const headers = this.buildHeaders()
+    const headers = this.headers()
     const body = new URLSearchParams({ query })
 
     try {
@@ -83,13 +84,9 @@ export class Papago {
         body,
       })
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`)
-      }
-
-      const responseData = (await response.json()) as PapagoDetectResponse
-      return responseData
+      return await response.json()
     } catch (error) {
+      console.error(error)
       throw error
     }
   }
