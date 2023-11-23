@@ -1,6 +1,6 @@
 # [Papago Translation API](https://guide.ncloud-docs.com/docs/en/papagotranslation-overview) SDK
 
-SDK for Papago Translation API, supporting multiple programming languages.
+SDK for Papago Translation API, supports multiple languages.
 
 ## Prerequisites
 
@@ -33,8 +33,8 @@ const { Papago } = require('papago-sdk-js')
 import { Papago } from 'papago-sdk-js'
 
 const papago = new Papago({
-  client_id: 'PAPAGO_CLIENT_ID',
-  client_secret: 'PAPAGO_CLIENT_SECRET',
+  id: 'PAPAGO_CLIENT_ID',
+  secret: 'PAPAGO_CLIENT_SECRET',
 })
 ```
 
@@ -43,10 +43,11 @@ const papago = new Papago({
 Translate the given text from one language to another.
 
 ```js
-const textTranslation = await papago.text.translate({
+const textTranslation = await papago.translate({
   from: 'en',
   to: 'ko',
-  text: 'Hello, World!'
+  type: 'text',
+  input: 'Hello, World!'
 });
 
 // Output:
@@ -66,9 +67,10 @@ const textTranslation = await papago.text.translate({
 Returns translated text only as `translatedText`.
 
 ```js
-const textOnly = await papago.text.translate({
+const textOnly = await papago.translate({
   from: 'en',
   to: 'ko',
+  type: 'text',
   text: 'Hello, World!',
   options: {
     textOnly: true,
@@ -86,10 +88,11 @@ Translate an HTML string from one language to another as  `translatedHtml`.
 Note that the HTML structure will be preserved.
 
 ```js
-const htmlTranslation = await papago.html.translate({
+const htmlTranslation = await papago.translate({
   from: 'en',
   to: 'ko',
-  html: '<div>Hello, world!</div>'
+  type: 'html',
+  input: '<div>Hello, world!</div>'
 });
 
 // Output:
