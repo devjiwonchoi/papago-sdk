@@ -2,24 +2,23 @@ import {
   PapagoConfig,
   PapagoDetectParams,
   PapagoDetectResponse,
-  PapagoHtmlTranslateParams,
-  PapagoTextTranslateParams,
+  PapagoTranslateParams,
   PapagoTranslateResponse,
 } from './types'
 
 export class Papago {
-  protected client_id: string
-  protected client_secret: string
+  protected id: string
+  protected secret: string
 
-  constructor({ client_id, client_secret }: PapagoConfig) {
-    this.client_id = client_id
-    this.client_secret = client_secret
+  constructor({ id, secret }: PapagoConfig) {
+    this.id = id
+    this.secret = secret
   }
 
   private buildHeaders(): Record<string, string> {
     return {
-      'X-NCP-APIGW-API-KEY-ID': this.client_id,
-      'X-NCP-APIGW-API-KEY': this.client_secret,
+      'X-NCP-APIGW-API-KEY-ID': this.id,
+      'X-NCP-APIGW-API-KEY': this.secret,
       'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
     }
   }
@@ -52,61 +51,36 @@ export class Papago {
     }
   }
 
-  public readonly text = {
-    translate: async ({
-      from,
-      to,
-      text,
-      options,
-    }: PapagoTextTranslateParams): Promise<
-      // TODO: simplify { message: string }
-      PapagoTranslateResponse | { message: string }
-    > => {
-      const api = 'https://naveropenapi.apigw.ntruss.com/nmt/v1/translation'
-      const params = new URLSearchParams({
-        source: from,
-        target: to,
-        text,
-      })
-      const response = await this.fetch(params, api)
+  async translate({ from, to, ...params }: PapagoTranslateParams) {
+    const apiURL = `https://naveropenapi.apigw.ntruss.com/${
+      params.html ? 'web-trans/v1/translate' : 'nmt/v1/translation'
+    }`
+    const query = new URLSearchParams({
+      source: from,
+      target: to,
+      html: params?.html,
+      text: params?.text,
+    })
 
-      if (!response)
-        return { message: 'Failed to translate. Please try again.' }
+    const response = await this.fetch(query, apiURL)
 
-      if (options?.textOnly)
-        return { translatedText: response.message?.result?.translatedText }
+    if (params?.options?.textOnly) {
+      return { translatedText: response?.message?.result?.translatedText }
+    }
 
-      return response as PapagoTranslateResponse
-    },
-  }
-
-  public readonly html = {
-    translate: async ({
-      from,
-      to,
-      html,
-    }: PapagoHtmlTranslateParams): Promise<PapagoTranslateResponse> => {
-      const api = 'https://naveropenapi.apigw.ntruss.com/web-trans/v1/translate'
-      const params = new URLSearchParams({
-        source: from,
-        target: to,
-        html,
-      })
-      const response = await this.fetch(params, api)
-      return response as PapagoTranslateResponse
-    },
+    return response as PapagoTranslateResponse
   }
 
   async detect({ query }: PapagoDetectParams): Promise<PapagoDetectResponse> {
-    const API_URL = 'https://naveropenapi.apigw.ntruss.com/langs/v1/dect'
+    const apiURL = 'https://naveropenapi.apigw.ntruss.com/langs/v1/dect'
     const headers = this.buildHeaders()
-    const formData = new URLSearchParams({ query })
+    const body = new URLSearchParams({ query })
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch(apiURL, {
         method: 'POST',
         headers,
-        body: formData,
+        body,
       })
 
       if (!response.ok) {

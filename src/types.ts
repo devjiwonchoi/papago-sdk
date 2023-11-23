@@ -1,6 +1,6 @@
 export type PapagoConfig = {
-  client_id: string
-  client_secret: string
+  id: string
+  secret: string
 }
 
 export type PapagoDetectParams = {
@@ -25,6 +25,9 @@ export type PapagoTextTranslateParams = {
     textOnly?: boolean
   }
 }
+
+export type PapagoTranslateParams =
+  | PapagoTextTranslateParams & PapagoHtmlTranslateParams
 
 export type PapagoTranslateResponse = {
   message?: {
