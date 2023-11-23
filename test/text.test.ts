@@ -26,9 +26,7 @@ describe('text.translate()', () => {
       to: 'ko',
       type: 'text',
       input: 'Hello, world!',
-      options: {
-        textOnly: true,
-      },
+      textOnly: true,
     })
 
     expect(translation).toEqual({ translatedText: '안녕, 세상!' })
@@ -40,9 +38,7 @@ describe('text.translate()', () => {
       to: 'ko',
       type: 'text',
       input: 'Hello, world!',
-      options: {
-        textOnly: true,
-      },
+      textOnly: true,
     })
 
     expect(translation).toEqual({ translatedText: '안녕, 세상!' })

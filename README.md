@@ -38,7 +38,7 @@ const papago = new Papago({
 })
 ```
 
-### `text.translate()`
+### `translate({ type: 'text' })`
 
 Translate the given text from one language to another.
 
@@ -62,7 +62,7 @@ const textTranslation = await papago.translate({
 }
 ```
 
-#### `options.textOnly: Boolean`
+#### `textOnly: Boolean`
 
 Returns translated text only as `translatedText`.
 
@@ -72,18 +72,18 @@ const textOnly = await papago.translate({
   to: 'ko',
   type: 'text',
   text: 'Hello, World!',
-  options: {
-    textOnly: true,
-  },
-});
+  textOnly: true,
+})
 
 // Output:
-{ translatedText: '안녕, 세상!' }
+{
+  translatedText: '안녕, 세상!'
+}
 ```
 
-### `html.translate()`
+### `translate({ type: 'html' })`
 
-Translate an HTML string from one language to another as  `translatedHtml`.
+Translate an HTML string from one language to another as `translatedHtml`.
 
 Note that the HTML structure will be preserved.
 
@@ -92,12 +92,16 @@ const htmlTranslation = await papago.translate({
   from: 'en',
   to: 'ko',
   type: 'html',
-  input: '<div>Hello, world!</div>'
-});
+  input: '<div>Hello, world!</div>',
+})
 
 // Output:
-{ translatedHtml: '<div>안녕, 세상!</div>' }
+{
+  translatedHtml: '<div>안녕, 세상!</div>'
+}
 ```
+
+> **Good to know: For `translate`, when `from` is set to `'auto'`, the source language is detected automatically.**
 
 ### `detect`
 
@@ -109,10 +113,10 @@ const detection = await papago.detect({
 })
 
 // Output:
-{ langCode: 'en' }
+{
+  langCode: 'en'
+}
 ```
-
-> **Good to know: when `from` is set to `'auto'`, the source language is detected automatically.**
 
 ## Language Support
 
