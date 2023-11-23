@@ -55,7 +55,7 @@ const textTranslation = await papago.text.translate({
     result: {
       srcLangType: 'en',
       tarLangType: 'ko',
-      translatedText: '안녕, 세상아!'
+      translatedText: '안녕, 세상!'
     }
   }
 }
@@ -76,7 +76,7 @@ const textOnly = await papago.text.translate({
 });
 
 // Output:
-{ translatedText: '안녕, 세상아!' }
+{ translatedText: '안녕, 세상!' }
 ```
 
 ### `html.translate()`
@@ -93,7 +93,7 @@ const htmlTranslation = await papago.html.translate({
 });
 
 // Output:
-{ translatedHtml: '<div>안녕, 세상아!</div>' }
+{ translatedHtml: '<div>안녕, 세상!</div>' }
 ```
 
 ### `detect`

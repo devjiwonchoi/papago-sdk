@@ -8,8 +8,8 @@ import {
 } from './types'
 
 export class Papago {
-  public client_id: string
-  public client_secret: string
+  protected client_id: string
+  protected client_secret: string
 
   constructor({ client_id, client_secret }: PapagoConfig) {
     this.client_id = client_id

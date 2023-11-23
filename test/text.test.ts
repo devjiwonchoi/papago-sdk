@@ -13,7 +13,7 @@ describe('text.translate()', () => {
         result: {
           srcLangType: 'en',
           tarLangType: 'ko',
-          translatedText: '안녕, 세상아!',
+          translatedText: '안녕, 세상!',
         },
       },
     })
@@ -29,7 +29,7 @@ describe('text.translate()', () => {
       },
     })
 
-    expect(translation).toEqual({ translatedText: '안녕, 세상아!' })
+    expect(translation).toEqual({ translatedText: '안녕, 세상!' })
   })
 
   it('should detect language when set from to auto', async () => {
@@ -42,6 +42,6 @@ describe('text.translate()', () => {
       },
     })
 
-    expect(translation).toEqual({ translatedText: '안녕, 세상아!' })
+    expect(translation).toEqual({ translatedText: '안녕, 세상!' })
   })
 })

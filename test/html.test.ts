@@ -8,7 +8,7 @@ describe('html.translate()', () => {
       html: '<div>Hello, world!</div>',
     })
 
-    expect(translation).toEqual({ translatedHtml: '<div>안녕, 세상아!</div>' })
+    expect(translation).toEqual({ translatedHtml: '<div>안녕, 세상!</div>' })
   })
 
   it('should detect language when set from to auto', async () => {
@@ -18,6 +18,6 @@ describe('html.translate()', () => {
       html: '<div>Hello, world!</div>',
     })
 
-    expect(translation).toEqual({ translatedHtml: '<div>안녕, 세상아!</div>' })
+    expect(translation).toEqual({ translatedHtml: '<div>안녕, 세상!</div>' })
   })
 })
