@@ -1,6 +1,6 @@
 # Language Support
 
-### Language Code
+## Language Code
 
 | Language               | Language code |
 |------------------------|---------------|
@@ -18,46 +18,46 @@
 | German                 | de            |
 | Italian                | it            |
 
-### Cross Language 🔄
+## Cross Language 🔄
 
 > Countries in the list are able to translate back also.
 >
-> Example: :kr: => :fr: & :fr: => :kr:
+> Example: 🇰🇷 => 🇫🇷 & 🇫🇷 => 🇰🇷
 
-#### Korean 🇰🇷
+### Korean 🇰🇷
 
-- English 🇺🇸
-- Japanese 🇯🇵
-- Chinese (Simplified) 🇨🇳
-- Chinese (Traditional) 🇹🇼
-- Vietnamese 🇻🇳
-- Thai 🇹🇭
-- Indonesian 🇮🇩
-- French 🇫🇷
-- Spanish 🇪🇸
-- Russian 🇷🇺
-- German 🇩🇪
-- Italian 🇮🇹
+- 🇺🇸 English
+- 🇯🇵 Japanese
+- 🇨🇳 Chinese (Simplified)
+- 🇹🇼 Chinese (Traditional)
+- 🇻🇳 Vietnamese
+- 🇹🇭 Thai
+- 🇮🇩 Indonesian
+- 🇫🇷 French
+- 🇪🇸 Spanish
+- 🇷🇺 Russian
+- 🇩🇪 German
+- 🇮🇹 Italian
 
-#### English 🇺🇸
+### English 🇺🇸
 
-- Japanese 🇯🇵
-- Chinese (Simplified) 🇨🇳
-- Chinese (Traditional) 🇹🇼
-- Vietnamese 🇻🇳
-- Thai 🇹🇭
-- Indonesian 🇮🇩
-- French 🇫🇷
+- 🇯🇵 Japanese
+- 🇨🇳 Chinese (Simplified)
+- 🇹🇼 Chinese (Traditional)
+- 🇻🇳 Vietnamese
+- 🇹🇭 Thai
+- 🇮🇩 Indonesian
+- 🇫🇷 French
 
-#### Japanese 🇯🇵
+### Japanese 🇯🇵
 
-- Chinese (Simplified) 🇨🇳
-- Chinese (Traditional) 🇹🇼
-- Vietnamese 🇻🇳
-- Thai 🇹🇭
-- Indonesian 🇮🇩
-- French 🇫🇷
+- 🇨🇳 Chinese (Simplified)
+- 🇹🇼 Chinese (Traditional)
+- 🇻🇳 Vietnamese
+- 🇹🇭 Thai
+- 🇮🇩 Indonesian
+- 🇫🇷 French
 
-#### Simplified Chinese 🇨🇳
+### Chinese (Simplified) 🇨🇳
 
-- Chinese (Traditional) 🇹🇼
+- 🇹🇼 Chinese (Traditional)
