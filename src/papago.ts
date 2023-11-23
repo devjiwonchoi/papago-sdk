@@ -52,7 +52,8 @@ export class Papago {
     ...params
   }: PapagoTranslateParams): Promise<PapagoTranslateResponse> {
     const isText = type === 'text'
-    const isTextOnly = 'options' in params && params.options?.textOnly && isText
+    const isTextOnly =
+      'textOnly' in params && Boolean(params.textOnly) && isText
     const apiURL = `https://naveropenapi.apigw.ntruss.com/${
       isText ? 'nmt/v1/translation' : 'web-trans/v1/translate'
     }`

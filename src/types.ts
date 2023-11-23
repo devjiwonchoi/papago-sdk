@@ -18,9 +18,7 @@ export type PapagoTranslateParams = {
 } & (
   | {
       type: 'text'
-      options?: {
-        textOnly?: boolean
-      }
+      textOnly?: boolean
     }
   | { type: 'html' }
 )
