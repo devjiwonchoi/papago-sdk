@@ -16,7 +16,7 @@ SDK for Papago Translation API, supports multiple languages.
 ## Installation
 
 ```bash
-pnpm add papago-sdk-js
+pnpm add papago-sdk
 ```
 
 ## Usage
@@ -27,10 +27,10 @@ Set up a client with your [Papago Translation credentials](https://api.ncloud-do
 
 ```js
 // CJS
-const { Papago } = require('papago-sdk-js')
+const { Papago } = require('papago-sdk')
 
 // ESM
-import { Papago } from 'papago-sdk-js'
+import { Papago } from 'papago-sdk'
 
 const papago = new Papago({
   id: 'PAPAGO_CLIENT_ID',

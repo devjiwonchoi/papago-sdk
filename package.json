@@ -1,6 +1,6 @@
 {
-  "name": "papago-sdk-js",
-  "version": "0.1.1",
+  "name": "papago-sdk",
+  "version": "0.2.0",
   "description": "Papago SDK for Node.js",
   "scripts": {
     "build": "bunchee",
@@ -32,7 +32,7 @@
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/devjiwonchoi/papago-sdk.git",
+  "repository": "https://github.com/devjiwonchoi/papago-sdk-js",
   "author": "Jiwon Choi @devjiwonchoi",
   "license": "MIT",
   "keywords": [
@@ -45,5 +45,8 @@
     "papago-sdk-js",
     "translate",
     "translator"
-  ]
+  ],
+  "dependencies": {
+    "papago-sdk-js": "^0.1.1"
+  }
 }
